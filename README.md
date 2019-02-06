@@ -48,4 +48,12 @@ Fase 3. “Git repository”
 
 ### _¿Que son las cosas que NO se deben hacer en un repositorio de GIT?_
 
-- Nunca hacer un 
+- Nunca hacer un hacer un commit directamente en _Master_
+- Nunca hacer un git push --force
+- Nunca subir un archivo binario.
+- Nunca usar git pull.
+
+### _¿A que año debía volver Marty McFly para reestablecer la linea de tiempo?_
+
+1955,2015,1985,1885
+
