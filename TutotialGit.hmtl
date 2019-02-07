@@ -6,6 +6,59 @@ _Para tener un buen flujo en **GIT** es necesario seguir los siguientes pasos:_
 
 _Paso 1_
 
+ - Crear un Repositorio en **GitHub**
+
+ ![Repositorio](/img/captura8.png)
+
+ > NOTA: Nos dara una URL que utilizaremos mas abajo.
+
+_Paso 2_
+
+  - Entrar a la Terminal desde la carpeta deseada (esto con clic derecho dentro de la carpeta)
+  Una vez en la terminal usar el siguiente comando:
+
+  ~~~
+
+  git init
+
+  ~~~
+
+  - Despues usa el comando:
+
+  ~~~
+
+  git add .  Para agregar todo dentro de la carpeta
+
+  ~~~
+
+   - Seguido del comando:
+
+   ~~~
+
+   git commit -m "Comentario"  Esto para cometar lo realizado
+
+   ~~~
+
+   - Y se agregara a git de forma remota con el comando:
+
+   ~~~
+
+   git remote add origin y la url que obtuvimos antes.
+
+   ~~~
+
+   - Por ultimo el comando que subira la carpeta y/o archivos es:
+
+   ~~~
+   git push -u origin master
+
+   ~~~
+
+### Como subir un archivo
+
+
+_Paso 1_
+
    - Entrar a la terminal desde la carpeta a usar
 
    ![Carpeta](/img/captura1.png)
