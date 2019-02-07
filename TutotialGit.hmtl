@@ -1,0 +1,60 @@
+#Tutorial Git
+
+_Para tener un buen flujo en **GIT** es necesario seguir los siguientes pasos:
+
+_Paso 1_
+
+   - Entrar a la terminal desde la carpeta a usar
+
+   ![Carpeta](/Guadalupe-Martinezl/Investigaciones/img/captura1.png)
+
+    ![Terminal](/Guadalupe-Martinezl/Investigaciones/img/captura2.png)
+
+_Paso 2_
+
+  - Una vez en la terminal usar el comando:
+
+  ~~~
+
+  git status
+
+  ~~~
+
+    ![Terminal](/Guadalupe-Martinezl/Investigaciones/img/captura3.png)
+
+_Paso 3_
+
+- Lo siguiente es agregar los archivos que se crearon o modificaron
+  con el comando siguiente:
+
+  ~~~
+
+  git add Nombre del archivo
+
+  ~~~
+
+  ![Terminal](/Guadalupe-Martinezl/Investigaciones/img/captura4.png)
+
+_Paso 4_
+
+-Despues se realiza el ***Commit***
+
+~~~
+
+git commit -m "Comentario"
+
+~~~
+
+![Terminal](/Guadalupe-Martinezl/Investigaciones/img/captura5.png)
+
+_Paso 5_
+
+Por ultimo el comando a usar es:
+
+~~~
+
+git push origin master
+
+~~~
+
+_Paso 6_
