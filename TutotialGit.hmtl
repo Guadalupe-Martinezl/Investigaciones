@@ -2,6 +2,8 @@
 
 _Para tener un buen flujo en **GIT** es necesario seguir los siguientes pasos:_
 
+### Repositorio en GIT
+
 _Paso 1_
 
    - Entrar a la terminal desde la carpeta a usar
@@ -21,7 +23,6 @@ _Paso 2_
   ~~~
 
   ![Terminal](/img/Captura3.png)
-
 
 _Paso 3_
 
