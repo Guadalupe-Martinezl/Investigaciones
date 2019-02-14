@@ -15,13 +15,16 @@ class TodoForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onAddTodo(this.state);
-    this.setState({
-      title: '',
-      responsible: '',
-      description: '',
-      priority: 'low'
-    });
+    this.props.onUpdateTodo();
+    console.log ("state del TodoForm----->", this.state);
+    //  this.props.onAddTodo(this.state);
+    //  this.props
+    //  this.setState({
+    //    title: '',
+    //    responsible: '',
+    //    description: '',
+    //    priority: 'low'
+    // });
   }
 
   handleInputChange(e) {
@@ -33,6 +36,9 @@ class TodoForm extends Component {
   }
 
   render() {
+    // console.log ("state del TodoForm --------------------->", this.state);
+    console.log ("prop del TodoForm----------------------->", this.props);
+
     return (
       <div className="card">
         <form onSubmit={this.handleSubmit} className="card-body">
@@ -81,6 +87,7 @@ class TodoForm extends Component {
           <button type="submit" className="btn btn-primary">
             Save
           </button>
+
         </form>
       </div>
     )

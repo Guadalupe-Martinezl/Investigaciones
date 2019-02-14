@@ -15,6 +15,7 @@ class App extends Component {
       todos
     }
     this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleEditTodo = this.handleEditTodo.bind(this);
   }
 
   removeTodo(index) {
@@ -31,6 +32,14 @@ class App extends Component {
     })
   }
 
+  handleEditTodo(todos)
+  {
+    console.log ("handleEditTodo------->",  this.state.todos[todos].title)
+    console.log ("handleEditTodo------->",  this.state.todos[0].resposible)
+    console.log ("handleEditTodo------->",  this.state.todos[0].description)
+    console.log ("handleEditTodo------->",  this.state.todos[0].priority)
+    // , this.state.todos[0].resposible para imprimir todo en una sola linea.
+  }
   render() {
     const todos = this.state.todos.map((todo, i) => {
       return (
@@ -52,13 +61,18 @@ class App extends Component {
                 onClick={this.removeTodo.bind(this, i)}>
                 Delete
               </button>
+              <button
+                className="btn btn-danger"
+                onClick={this.handleEditTodo.bind(this, i)}>
+                Edit
+              </button>
             </div>
           </div>
         </div>
       )
     });
 
-  
+
     return (
       <div className="App">
 
@@ -76,7 +90,7 @@ class App extends Component {
 
             <div className="col-md-4 text-center">
                 <img src={logo} className="App-logo" alt="logo" />
-              <TodoForm onAddTodo={this.handleAddTodo}></TodoForm>
+              <TodoForm onAddTodo={this.handleAddTodo} onUpdateTodo={this.handleEditTodo}></TodoForm>
             </div>
 
             <div className="col-md-8">
