@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class TodoForm extends Component {
-  constructor () {
+  constructor (props) {
     super();
     this.state = {
       title: '',
@@ -12,22 +12,22 @@ class TodoForm extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+sa
+
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onUpdateTodo();
-    console.log ("state del TodoForm----->", this.state);
-    //  this.props.onAddTodo(this.state);
-    //  this.props
-    //  this.setState({
-    //    title: '',
-    //    responsible: '',
-    //    description: '',
-    //    priority: 'low'
-    // });
+    this.props.onAddTodo(this.state);
+    this.setState({
+       title: '',
+       responsible: '',
+       description: '',
+       priority: 'low'
+    });
   }
 
   handleInputChange(e) {
+    this.props.onUpdateTodo(this.state);
     const {value, name} = e.target;
     console.log(value, name);
     this.setState({
@@ -43,17 +43,18 @@ class TodoForm extends Component {
       <div className="card">
         <form onSubmit={this.handleSubmit} className="card-body">
           <div className="form-group">
-            <input
+            <input type="hidden" id="index" name="index"
               type="text"
               name="title"
               className="form-control"
               value={this.state.title}
+              value={this.state.titleUpdate}
               onChange={this.handleInputChange}
               placeholder="Title"
               />
           </div>
           <div className="form-group">
-            <input
+            <input type="hidden" id="index" name="index" value={this.state.responsibleUpdate}
               type="text"
               name="responsible"
               className="form-control"
@@ -63,7 +64,7 @@ class TodoForm extends Component {
               />
           </div>
           <div className="form-group">
-            <input
+            <input type="hidden" id="index" name="index" value={this.state.descriptionUpdate}
               type="text"
               name="description"
               className="form-control"

@@ -12,10 +12,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      todos
+      todos,
+      titleUpdate: '',
+      responsibleUpdate: '',
+      descriptionUpdate: '',
+      priorityUpdate:''
     }
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleEditTodo = this.handleEditTodo.bind(this);
+
   }
 
   removeTodo(index) {
@@ -25,6 +30,15 @@ class App extends Component {
       })
     });
   }
+  handleEditTodo(index)
+  {
+    this.setState({
+      titleUpdate: this.state.todos[index].title,
+      responsibleUpdate: this.state.todos[index].responsible,
+      descriptionUpdate: this.state.todos[index].description,
+      priorityUpdate: this.state.todos[index].priority
+    });
+  }
 
   handleAddTodo(todo) {
     this.setState({
@@ -32,14 +46,10 @@ class App extends Component {
     })
   }
 
-  handleEditTodo(todos)
-  {
-    console.log ("handleEditTodo------->",  this.state.todos[todos].title)
-    console.log ("handleEditTodo------->",  this.state.todos[0].resposible)
-    console.log ("handleEditTodo------->",  this.state.todos[0].description)
-    console.log ("handleEditTodo------->",  this.state.todos[0].priority)
-    // , this.state.todos[0].resposible para imprimir todo en una sola linea.
-  }
+
+
+
+
   render() {
     const todos = this.state.todos.map((todo, i) => {
       return (
@@ -52,8 +62,8 @@ class App extends Component {
               </span>
             </div>
             <div className="card-body">
+              <p>{todo.responsible}</p>
               {todo.description}
-              <p>{todo.resposible}</p>
             </div>
             <div className="card-footer">
               <button
@@ -61,9 +71,12 @@ class App extends Component {
                 onClick={this.removeTodo.bind(this, i)}>
                 Delete
               </button>
+                </div>
+              <div className="card-footer">
               <button
-                className="btn btn-danger"
+                className="btn btn-dark"
                 onClick={this.handleEditTodo.bind(this, i)}>
+
                 Edit
               </button>
             </div>
@@ -90,7 +103,10 @@ class App extends Component {
 
             <div className="col-md-4 text-center">
                 <img src={logo} className="App-logo" alt="logo" />
-              <TodoForm onAddTodo={this.handleAddTodo} onUpdateTodo={this.handleEditTodo}></TodoForm>
+              <TodoForm onAddTodo={this.handleAddTodo} onUpdateTodo={this.handleEditTodo} valores={this.state}></TodoForm>
+              {JSON.stringify(
+                this.state
+              )}
             </div>
 
             <div className="col-md-8">
@@ -106,3 +122,5 @@ class App extends Component {
 }
 
 export default App;
+
+// establecer los valores ocultos en el formulario
