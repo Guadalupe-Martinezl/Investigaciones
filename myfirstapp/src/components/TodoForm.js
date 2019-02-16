@@ -27,7 +27,6 @@ sa
   }
 
   handleInputChange(e) {
-    this.props.onUpdateTodo(this.state);
     const {value, name} = e.target;
     console.log(value, name);
     this.setState({
@@ -43,18 +42,18 @@ sa
       <div className="card">
         <form onSubmit={this.handleSubmit} className="card-body">
           <div className="form-group">
-            <input type="hidden" id="index" name="index"
+          <input type="hidden" id="index" name="index" />
+            <input
               type="text"
               name="title"
               className="form-control"
               value={this.state.title}
-              value={this.state.titleUpdate}
               onChange={this.handleInputChange}
               placeholder="Title"
               />
           </div>
           <div className="form-group">
-            <input type="hidden" id="index" name="index" value={this.state.responsibleUpdate}
+            <input
               type="text"
               name="responsible"
               className="form-control"
@@ -64,7 +63,7 @@ sa
               />
           </div>
           <div className="form-group">
-            <input type="hidden" id="index" name="index" value={this.state.descriptionUpdate}
+            <input
               type="text"
               name="description"
               className="form-control"
@@ -88,7 +87,13 @@ sa
           <button type="submit" className="btn btn-primary">
             Save
           </button>
-
+          {JSON.stringify(
+            this.state
+          )}
+          <p>==============================================================</p>
+          {JSON.stringify(
+            this.props
+          )}
         </form>
       </div>
     )

@@ -13,6 +13,7 @@ class App extends Component {
     super();
     this.state = {
       todos,
+      indexUpdate:'',
       titleUpdate: '',
       responsibleUpdate: '',
       descriptionUpdate: '',
@@ -30,9 +31,11 @@ class App extends Component {
       })
     });
   }
+
   handleEditTodo(index)
   {
     this.setState({
+      indexUpdate: index,
       titleUpdate: this.state.todos[index].title,
       responsibleUpdate: this.state.todos[index].responsible,
       descriptionUpdate: this.state.todos[index].description,
@@ -76,7 +79,6 @@ class App extends Component {
               <button
                 className="btn btn-dark"
                 onClick={this.handleEditTodo.bind(this, i)}>
-
                 Edit
               </button>
             </div>
@@ -103,10 +105,15 @@ class App extends Component {
 
             <div className="col-md-4 text-center">
                 <img src={logo} className="App-logo" alt="logo" />
-              <TodoForm onAddTodo={this.handleAddTodo} onUpdateTodo={this.handleEditTodo} valores={this.state}></TodoForm>
-              {JSON.stringify(
-                this.state
-              )}
+              <TodoForm
+                onAddTodo={this.handleAddTodo}
+                onUpdateTodo={this.handleEditTodo}
+                indexUpdate={this.state.indexUpdate}
+                titleUpdate={this.state.titleUpdate}
+                descriptionUpdate={this.state.descriptionUpdate}
+                responsibleUpdate={this.state.responsibleUpdate}
+                priorityUpdate={this.state.priorityUpdate}
+              />
             </div>
 
             <div className="col-md-8">
