@@ -39,16 +39,17 @@ class TodoForm extends Component {
 
   render() {
     // console.log ("state del TodoForm --------------------->", this.state);
-    // console.log ("prop del TodoForm----------------------->", this.props);
+     console.log ("prop del TodoForm----------------------->", this.props);
     // console.log ("soy el render-")
+
 
     return (
       <div className="card">
-        <form onSubmit={this.handleSubmit} className="card-body">
+        <form onSubmit={this.props.indexUpdate === "" ? this.handleSubmit : this.props.AddUpdate} className="card-body">
           <div className="form-group">
           <input type="hidden" id="index" name="index" value={this.props.indexUpdate} />
 
-            {this.props.titleUpdate === "" ?
+            { this.props.indexUpdate === "" ?
              <input
                type="text"
                name="title"
@@ -70,16 +71,16 @@ class TodoForm extends Component {
 
           </div>
           <div className="form-group">
-          <input type="hidden" id="index" name="index" value={this.props.indexUpdate} />
 
-            {this.props.ResponsibleUpdate === "" ?
-             <input
-               type="text"
-               name="title"
-               className="form-control"
-               value={this.state.responsible}
-               onChange={this.handleInputChange}
-               placeholder="Responsible"
+            { this.props.indexUpdate === "" ?
+            <input
+              type="text"
+              name="responsible"
+              className="form-control"
+              value={this.state.responsible}
+              onChange={this.handleInputChange}
+              placeholder="Responsible"
+
              />
                :
                <input
@@ -94,9 +95,8 @@ class TodoForm extends Component {
           </div>
 
           <div className="form-group">
-          <input type="hidden" id="index" name="index" value={this.props.indexUpdate} />
 
-            {this.props.DescriptionUpdate === "" ?
+            { this.props.indexUpdate === "" ?
              <input
                type="text"
                name="description"
@@ -117,9 +117,8 @@ class TodoForm extends Component {
             }
           </div>
           <div className="form-group">
-          <input type="hidden" id="index" name="index" value={this.props.indexUpdate} />
 
-            {this.props.priorityUpdate === "" ?
+            { this.props.indexUpdate === "" ?
             <select
                 name="priority"
                 className="form-control"
@@ -157,8 +156,14 @@ class TodoForm extends Component {
 
 
 
+          {JSON.stringify(
+                      this.props
+                    )}
+                  { /* <p>==============================================================</p>
+                    {JSON.stringify(
+                      this.props
+                    )}*/}
 
-      
         </form>
       </div>
     )
