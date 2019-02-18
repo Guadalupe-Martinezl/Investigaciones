@@ -28,6 +28,7 @@ class TodoForm extends Component {
     });
   }
 
+
   handleInputChange(e) {
     const {value, name} = e.target;
     console.log(value, name);
@@ -39,7 +40,7 @@ class TodoForm extends Component {
   render() {
     // console.log ("state del TodoForm --------------------->", this.state);
     // console.log ("prop del TodoForm----------------------->", this.props);
-    console.log ("soy el render-")
+    // console.log ("soy el render-")
 
     return (
       <div className="card">
@@ -59,10 +60,10 @@ class TodoForm extends Component {
                :
                <input
                  type="text"
-                 name="title"
+                 name="titleUpdate"
                  className="form-control"
                  value={this.props.titleUpdate}
-                 onChange={this.handleInputChange}
+                 onChange={this.props.ChangeUpdate}
                  placeholder="Title"
                />
             }
@@ -83,10 +84,10 @@ class TodoForm extends Component {
                :
                <input
                  type="text"
-                 name="responsible"
+                 name="responsibleUpdate"
                  className="form-control"
                  value={this.props.responsibleUpdate}
-                 onChange={this.handleInputChange}
+                 onChange={this.props.ChangeUpdate}
                  placeholder="Responsible"
                />
             }
@@ -107,10 +108,10 @@ class TodoForm extends Component {
                :
                <input
                  type="text"
-                 name="description"
+                 name="descriptionUpdate"
                  className="form-control"
                  value={this.props.descriptionUpdate}
-                 onChange={this.handleInputChange}
+                 onChange={this.props.ChangeUpdate}
                  placeholder="Description"
                />
             }
@@ -131,10 +132,10 @@ class TodoForm extends Component {
             </select>
                :
                <select
-                   name="priority"
+                   name="priorityUpdate"
                    className="form-control"
                    value={this.props.priorityUpdate}
-                   onChange={this.handleInputChange}
+                   onChange={this.props.ChangeUpdate}
                  >
                  <option>low</option>
                  <option>medium</option>
@@ -149,7 +150,7 @@ class TodoForm extends Component {
                 Save
               </button>
               :
-              <button type="submit" className="btn btn-success">
+              <button className="btn btn-success">
                 Update
               </button>
           }
@@ -157,13 +158,7 @@ class TodoForm extends Component {
 
 
 
-          {JSON.stringify(
-            this.state
-          )}
-          <p>==============================================================</p>
-          {JSON.stringify(
-            this.props
-          )}
+      
         </form>
       </div>
     )

@@ -21,7 +21,7 @@ class App extends Component {
     }
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleEditTodo = this.handleEditTodo.bind(this);
-
+    this.handleInputChangeUpdate =this.handleInputChangeUpdate.bind(this);
   }
 
   removeTodo(index) {
@@ -49,7 +49,13 @@ class App extends Component {
     })
   }
 
-
+  handleInputChangeUpdate(e) {
+    const {value, name} = e.target;
+    console.log(value, name);
+    this.setState({
+      [name]: value
+    });
+  }
 
 
 
@@ -108,6 +114,7 @@ class App extends Component {
               <TodoForm
                 onAddTodo={this.handleAddTodo}
                 onUpdateTodo={this.handleEditTodo}
+                ChangeUpdate={this.handleInputChangeUpdate}
                 indexUpdate={this.state.indexUpdate}
                 titleUpdate={this.state.titleUpdate}
                 descriptionUpdate={this.state.descriptionUpdate}
