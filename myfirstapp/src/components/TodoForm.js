@@ -45,7 +45,7 @@ class TodoForm extends Component {
 
     return (
       <div className="card">
-        <form onSubmit={this.props.indexUpdate === "" ? this.handleSubmit : this.props.AddUpdate} className="card-body">
+        <form onSubmit={this.props.indexUpdate === "" ? this.handleSubmit : this.props.AddUpdate } className="card-body">
           <div className="form-group">
           <input type="hidden" id="index" name="index" value={this.props.indexUpdate} />
 
@@ -118,7 +118,7 @@ class TodoForm extends Component {
           </div>
           <div className="form-group">
 
-            { this.props.indexUpdate === "" ?
+            { this.props.indexUpdate === this.onSubmitUp ?
             <select
                 name="priority"
                 className="form-control"
@@ -149,9 +149,10 @@ class TodoForm extends Component {
                 Save
               </button>
               :
-              <button className="btn btn-success">
+              <button  className="btn btn-success" >
                 Update
               </button>
+
           }
 
 
