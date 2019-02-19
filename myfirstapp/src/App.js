@@ -11,6 +11,7 @@ import TodoForm from './components/TodoForm';
 class App extends Component {
   constructor() {
     super();
+
     this.state = {
       todos,
       indexUpdate:'',
@@ -70,9 +71,10 @@ class App extends Component {
     datos.responsible = this.state.responsibleUpdate
     datos.description = this.state.descriptionUpdate
     datos.priority = this.state.priorityUpdate
-    // this.setState({
-    //   todos[index]: titleUpdate
-    // })
+    // let {todos} = state
+    this.setState({
+      // todos[index]: datos
+    })
     console.log("datos", datos)
 
 
