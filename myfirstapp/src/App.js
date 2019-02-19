@@ -24,6 +24,7 @@ class App extends Component {
     this.handleEditTodo = this.handleEditTodo.bind(this);
     this.handleInputChangeUpdate =this.handleInputChangeUpdate.bind(this);
     this.handleAddTodoUpdate = this.handleAddTodoUpdate.bind(this);
+
   }
 
   removeTodo(index) {
@@ -61,24 +62,35 @@ class App extends Component {
 
   handleAddTodoUpdate(e) {
     e.preventDefault();
-    // this.setState({
-    //   todos: [...this.state.todos, todo]
-    // })
     var datos = this.state.todos[this.state.indexUpdate]
     var index = this.state.indexUpdate
+
+    let {todos} = this.state
 
     datos.title = this.state.titleUpdate
     datos.responsible = this.state.responsibleUpdate
     datos.description = this.state.descriptionUpdate
     datos.priority = this.state.priorityUpdate
-    // let {todos} = state
+
+    todos[index]= datos
+
     this.setState({
-      // todos[index]: datos
+       todos
     })
+    this.setState({
+      indexUpdate:'',
+      titleUpdate: '',
+      responsibleUpdate: '',
+      descriptionUpdate: '',
+      priorityUpdate: 'low'
+    })
+
     console.log("datos", datos)
 
 
   }
+
+
 
 
   render() {
