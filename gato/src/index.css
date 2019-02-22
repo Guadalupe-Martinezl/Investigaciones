@@ -1,7 +1,7 @@
 body {
-  background:  #df9cae;
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  background:  #0a8bda;
+  font: 18px "Arial", Futura, sans-serif;
+  margin: 40px;
 }
 
 ol, ul {
@@ -19,8 +19,8 @@ ol, ul {
 }
 
 .square {
-  background: #fff;
-  border: 2px solid #999;
+  background: #d3bad2;
+  border: 3px solid #345;
   float: left;
   font-size: 25px;
   font-weight: bold;
@@ -38,7 +38,7 @@ ol, ul {
 }
 
 .kbd-navigation .square:focus {
-  background: #ddd;
+  background: #3331e3;
 }
 
 .game {

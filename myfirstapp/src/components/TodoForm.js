@@ -157,13 +157,7 @@ class TodoForm extends Component {
 
 
 
-          {JSON.stringify(
-                      this.props
-                    )}
-                  { /* <p>==============================================================</p>
-                    {JSON.stringify(
-                      this.props
-                    )}*/}
+          
 
         </form>
       </div>
