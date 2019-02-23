@@ -1,8 +1,10 @@
 
 body {
-  background:  #0a8bda;
+  background-image: url("gato2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   font: 18px "Arial", Futura, sans-serif;
-  margin: 40px;
+  margin: 100px;
 }
 
 ol, ul {

@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import styled, {css}from 'styled-components'
 
+const Wrapper = styled.section`
+  aling-items: center;
+  padding: 4em;
+  background-image:
+  url("http://media.gettyimages.com/vectors/cat-seamless-pattern-in-vintage-colors-vector-id507256764?s=170667a&w=1007");
+`;
+
+
 
 const Button = styled.button`
   background: transparent;
@@ -30,7 +38,9 @@ function Square(props) {
 }
 
 class Board extends React.Component {
+
   renderSquare(i) {
+
     return (
       <Square
         value={this.props.squares[i]}
@@ -40,8 +50,9 @@ class Board extends React.Component {
   }
 
   render() {
-
     return (
+      <Wrapper>
+
       <div>
         <div className="board-row">
           {this.renderSquare(0)}
@@ -59,6 +70,7 @@ class Board extends React.Component {
           {this.renderSquare(8)}
         </div>
       </div>
+    </Wrapper>
     );
   }
 }
