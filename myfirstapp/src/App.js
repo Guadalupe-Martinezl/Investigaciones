@@ -56,17 +56,11 @@ class App extends Component {
 
   handleInputChangeUpdate(e) {
     const {value, name} = e.target;
-    console.log(value, name);
+    // console.log(value, name);
     this.setState({
       [name]: value
     });
   }
-
-
-
-    
-
-
 
   handleAddTodoUpdate(e) {
     e.preventDefault();
@@ -93,7 +87,7 @@ class App extends Component {
       priorityUpdate: 'low'
     })
 
-    console.log("datos", datos)
+
 
 
   }
@@ -105,10 +99,35 @@ class App extends Component {
           console.log(json)
           let {todos} = this.state
 
+          var task = {
+            title:json.title,
+            responsible:json.userId,
+            description:"lorem",
+            priority:"high"
+          };
+          todos.push(task);
+          console.log("task-->",task);
+          console.log("completed--->",json.completed);
+          console.log("id--->",json.id);
+          console.log("title--->",json.title);
+          console.log("userId--->",json.userId);
+
+          // object.description = this.state.description
+          // object.priority    = this.state.priority
+          // arr.push({description : priority });
+
+
+          this.setState({
+            title:"",
+            responsible:"",
+            description:"",
+            priority:""
+            })
+
           this.setState({
             todos
           })
-          console.log("todos---->",todos);
+
         })
       //   this.setState({
       //     todos: [...this.state.todos]
