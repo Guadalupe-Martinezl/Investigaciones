@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class TodoForm extends Component {
   constructor (props) {
-    console.log('soy bob el constructor')
+
     super(props);
     this.state = {
       title: '',
@@ -31,7 +31,7 @@ class TodoForm extends Component {
 
   handleInputChange(e) {
     const {value, name} = e.target;
-    console.log(value, name);
+    // console.log(value, name);
     this.setState({
       [name]: value
     });
@@ -39,7 +39,7 @@ class TodoForm extends Component {
 
   render() {
     // console.log ("state del TodoForm --------------------->", this.state);
-     console.log ("prop del TodoForm----------------------->", this.props);
+     // console.log ("prop del TodoForm----------------------->", this.props);
     // console.log ("soy el render-")
 
 
@@ -157,7 +157,7 @@ class TodoForm extends Component {
 
 
 
-          
+
 
         </form>
       </div>
