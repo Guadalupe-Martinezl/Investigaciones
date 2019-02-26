@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 // data
-import { todos } from './todos.json';
+//import { todos } from './todos.json';
 
 // subcomponents
 import TodoForm from './components/TodoForm';
@@ -13,13 +13,15 @@ class App extends Component {
     super();
 
     this.state = {
-      todos,
+      todos:[],
       indexUpdate:'',
       titleUpdate: '',
       responsibleUpdate: '',
       descriptionUpdate: '',
       priorityUpdate:''
     }
+
+
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleEditTodo = this.handleEditTodo.bind(this);
     this.handleInputChangeUpdate =this.handleInputChangeUpdate.bind(this);
@@ -60,6 +62,12 @@ class App extends Component {
     });
   }
 
+
+
+    
+
+
+
   handleAddTodoUpdate(e) {
     e.preventDefault();
     var datos = this.state.todos[this.state.indexUpdate]
@@ -89,6 +97,23 @@ class App extends Component {
 
 
   }
+
+    componentDidMount(){
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+        .then((response) => { return response.json()})
+        .then((json) => {
+          console.log(json)
+          let {todos} = this.state
+
+          this.setState({
+            todos
+          })
+          console.log("todos---->",todos);
+        })
+      //   this.setState({
+      //     todos: [...this.state.todos]
+      // })
+    }
 
 
 
