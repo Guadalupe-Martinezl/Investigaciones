@@ -93,11 +93,12 @@ class App extends Component {
   }
 
     componentDidMount(){
-        fetch('https://jsonplaceholder.typicode.com/todos/1')
+        fetch('https://jsonplaceholder.typicode.com/todos/')
         .then((response) => { return response.json()})
         .then((json) => {
           console.log(json)
           let {todos} = this.state
+
 
           var task = {
             title:json.title,
@@ -106,24 +107,19 @@ class App extends Component {
             priority:"high"
           };
           todos.push(task);
-          console.log("task-->",task);
-          console.log("completed--->",json.completed);
-          console.log("id--->",json.id);
-          console.log("title--->",json.title);
-          console.log("userId--->",json.userId);
-
-          // object.description = this.state.description
-          // object.priority    = this.state.priority
-          // arr.push({description : priority });
 
 
-          this.setState({
-            title:"",
-            responsible:"",
-            description:"",
-            priority:""
-            })
 
+          json.forEach(function(element, index) {
+            var obj1 = {
+              title:element.title,
+              responsible:element.userId,
+              description:"lorem",
+              priority:"high"
+            }
+
+               console.log(element.title, index );
+               });
           this.setState({
             todos
           })
