@@ -27,6 +27,7 @@ class App extends Component {
     this.handleInputChangeUpdate =this.handleInputChangeUpdate.bind(this);
     this.handleAddTodoUpdate = this.handleAddTodoUpdate.bind(this);
 
+
   }
 
   removeTodo(index) {
@@ -99,26 +100,16 @@ class App extends Component {
           console.log(json)
           let {todos} = this.state
 
-
-          var task = {
-            title:json.title,
-            responsible:json.userId,
-            description:"lorem",
-            priority:"high"
-          };
-          todos.push(task);
-
-
-
           json.forEach(function(element, index) {
-            var obj1 = {
+            var task = {
               title:element.title,
               responsible:element.userId,
               description:"lorem",
               priority:"high"
-            }
+            };
+            todos.push(task);
 
-               console.log(element.title, index );
+               console.log(element, index );
                });
           this.setState({
             todos
