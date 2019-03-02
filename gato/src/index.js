@@ -1,104 +1,126 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import styled, {css}from 'styled-components'
 
 
+const Title = styled.h1`
+  font-size: 1.7em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+const Button = styled.button`
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+const Input = styled.input.attrs(({ size }) => ({
+  margin: size || "1em",
+  padding: size || "1em"
+}))`
+  color:palevioletred ;
+  font-size: 1em;
+  border: 2px solid orange;
+  border-radius: 3px;
+`;
 
 class Game extends React.Component {
   constructor() {
     super();
     this.state = {
-        num1: '' ,
+        num1: '',
         num2: '',
         num3: '',
         result: '',
-        result2:'',
-        result3:''
-
       }
         this.handleComparativa = this.handleComparativa.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-
 }
-handleComparativa(num1, num2, num3 ){
-  this.setState({})
-    var result= (num1>num3) ? num1 : num3;
-      var  result2 = (num2>num3) ? num2 : num3;
-      return
-      var result3 = (result<result2) ? result : result2;
+
+
+
+
+
+handleComparativa({num1, num2, num3} ){
+    var result= [num1,num2,num3]
+    result.sort (function(a,b) {return a-b;})
+    return result[1];
   }
 
-        //console.log("el numero de en medio es--->",result3);
-
-        handleSubmit(e) {
+  handleSubmit(e) {
    e.preventDefault();
-   // this.props.onAddTodo(this.state);
+   var resultadofinal = this.handleComparativa(this.state)
    this.setState({
-     num1: this.state.num1 ,
-     num2: this.state.num2,
-     num3: this.state.num3,
-     result: this.state.result,
-     result2:this.state.result2,
-     result3:this.state.result3
+     result: resultadofinal,
    });
- }
+}
+handleInputChange(e) {
+    const {value, name} = e.target;
+    // console.log(value, name);
+    this.setState({
+      [name]: value
+    });
+}
 
-
-          handleInputChange(e) {
-            const {value, name} = e.target;
-            // console.log(value, name);
-            this.setState({
-              [name]: value
-            });
-        }
+      //console.log("el numero de en medio es--->",result3);
   render() {
 
     return (
-      <div>
-      <form onSubmit={this.handleSubmit}>
 
-      <h5> Primer valor </h5>
-      <input
+    <div>
+      <form onSubmit={this.handleSubmit}>
+      <Title>
+      <h1>Valor Medio</h1>
+      </Title>
+      <h4> Primer valor </h4>
+      <Input
         type="text"
         name="num1"
         value={this.state.num1}
         onChange={this.handleInputChange}
-        placeholder="Ingrese un numero"
-      />
+        placeholder="Ingrese numero"
+        />
 
-      <h5> Segundo valor </h5>
-      <input
+      <h4> Segundo valor </h4>
+      <Input
         type="text"
         name="num2"
         value={this.state.num2}
         onChange={this.handleInputChange}
-        placeholder="Ingrese un numero"
+        placeholder="Ingrese numero"
+        />
+
+      <h4> Tercer valor </h4>
+      <Input
+      type="text"
+      name="num3"
+      value={this.state.num3}
+      onChange={this.handleInputChange}
+      placeholder="Ingrese numero"
       />
 
-      <h5> Tercer valor </h5>
-      <input
+      <Button
+      type="submit">
+      Comparar
+      </Button>
+
+      <h4> Resultado </h4>
+      <Input
         type="text"
-        name="num3"
-        value={this.state.num3}
-        onChange={this.handleInputChange}
-        placeholder="Ingrese un numero"
-      />
+        name="result"
+        value={this.state.result}
 
-      <button
-      type = "submit"
-      className="btn btn-success"> Comparar </button>
-
-      <h5> Resultado </h5>
-      <input type="text" name="result3" value={this.setState.result3} />
+        />
       </form>
-
-      </div>
-
+    </div>
     );
   }
 }
-
 
 // ========================================
 
