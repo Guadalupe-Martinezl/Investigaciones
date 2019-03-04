@@ -62,10 +62,21 @@ handleDia(e)
     var oneDay = 1000 * 60 * 60 * 24;
     // console.log("oneDay-->",oneDay);
     var day = Math.floor(diff / oneDay);
-    // console.log("day-->",day);
+    var weekend = (day /7 )+1;
+    var fecha_final = new Date('2019-5-23');
+    var resultado = now - fecha_final;
+    var year = (resultado / oneDay);
+    console.log("year-->",year);
+    console.log("weekend-->",weekend);
     console.log('Day of year: ' + day);
 
 
+    // var d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    // d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+    // var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    // var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+    // // var result = getWeekNumber(new Date());
+    // console.log ("La semana es:-->",weekNo);
 }
 
 
