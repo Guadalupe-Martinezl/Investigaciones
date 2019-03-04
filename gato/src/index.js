@@ -22,7 +22,7 @@ const Input = styled.input.attrs(({ size }) => ({
   margin: size || "1em",
   padding: size || "1em"
 }))`
-  color:palevioletred ;
+  color:black ;
   font-size: 1em;
   border: 2px solid orange;
   border-radius: 3px;
@@ -92,7 +92,7 @@ handleInputChange(e) {
         name="num2"
         value={this.state.num2}
         onChange={this.handleInputChange}
-        placeholder="Ingrese numero"
+        placeholder="Ingrese  numero"
         />
 
       <h4> Tercer valor </h4>
