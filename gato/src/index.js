@@ -22,7 +22,7 @@ const Input = styled.input.attrs(({ size }) => ({
   margin: size || "1em",
   padding: size || "1em"
 }))`
-  color:palevioletred ;
+  color:black ;
   font-size: 1em;
   border: 2px solid orange;
   border-radius: 3px;
@@ -32,48 +32,81 @@ class Game extends React.Component {
   constructor() {
     super();
     this.state = {
-        num1: '',
-        num2: '',
-        num3: '',
+        year: '2019',
+        month: '06',
+        day: '18',
         result: '',
       }
-        this.handleComparativa = this.handleComparativa.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleDia = this.handleDia.bind(this);
+        // this.handleDiaAño = this.handleDiaAño.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleInputChange = this.handleInputChange.bind(this);
 }
 
 
 
 
 
-handleComparativa({num1, num2, num3} ){
-    var result= [num1,num2,num3]
-    result.sort (function(a,b) {return a-b;})
-    return result[1];
-  }
+handleDia(e)
+ {
+    e.preventDefault();
+    var result = new Date();
+    console.log("result--->",result.getDay());
+    var days = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+    console.log("el dia es:--->",days[result.getDay()]);
 
-  handleSubmit(e) {
-   e.preventDefault();
-   var resultadofinal = this.handleComparativa(this.state)
-   this.setState({
-     result: resultadofinal,
-   });
-}
-handleInputChange(e) {
-    const {value, name} = e.target;
-    // console.log(value, name);
-    this.setState({
-      [name]: value
-    });
+    var now = new Date();
+    var start = new Date(now.getFullYear(), 0, 0);
+    var diff = now - start;
+    // console.log("diff-->",diff);
+    var oneDay = 1000 * 60 * 60 * 24;
+    // console.log("oneDay-->",oneDay);
+    var day = Math.floor(diff / oneDay);
+    // console.log("day-->",day);
+    console.log('Day of year: ' + day);
+
+
 }
 
-      // console.log("el numero de en medio es--->",result3);
+
+
+  // handleDiaAño({month,day}) {
+  //     var result2 = new Date();
+  //     day + dias anteriores
+  //     return result2;
+  //     console.log();
+  //   }
+  //
+  //   handleMenosDiaAño({month,day}) {
+  //       var result2 = new Date();
+  //       day - dias cumpleaños
+  //       return result2;
+  //       console.log();
+  //     }
+
+
+//   handleSubmit(e) {
+//    e.preventDefault();
+//    var resultadofinal = this.handleComparativa(this.state)
+//    this.setState({
+//      result: resultadofinal,
+//    });
+// }
+// handleInputChange(e) {
+//     const {value, name} = e.target;
+//     // console.log(value, name);
+//     this.setState({
+//       [name]: value
+//     });
+// }
+
+      //console.log("el numero de en medio es--->",result3);
   render() {
 
     return (
 
     <div>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleDia}>
       <Title>
       <h1>Valor Medio</h1>
       </Title>
@@ -92,7 +125,7 @@ handleInputChange(e) {
         name="num2"
         value={this.state.num2}
         onChange={this.handleInputChange}
-        placeholder="Ingrese numero"
+        placeholder="Ingrese  numero"
         />
 
       <h4> Tercer valor </h4>
