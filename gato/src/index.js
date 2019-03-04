@@ -67,7 +67,7 @@ handleInputChange(e) {
     });
 }
 
-      //console.log("el numero de en medio es--->",result3);
+      // console.log("el numero de en medio es--->",result3);
   render() {
 
     return (
