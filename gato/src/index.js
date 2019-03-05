@@ -32,15 +32,19 @@ class Game extends React.Component {
   constructor() {
     super();
     this.state = {
-        year: '2019',
-        month: '06',
-        day: '18',
         result: '',
+        fecha_final:new Date(''),
+        days:'',
+        day:'',
+        yearc:'',
+        weekend:'',
+        daysw:'',
+        yeara:''
       }
         this.handleDia = this.handleDia.bind(this);
         // this.handleDiaAño = this.handleDiaAño.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
 }
 
 
@@ -50,116 +54,134 @@ class Game extends React.Component {
 handleDia(e)
  {
     e.preventDefault();
-    var result = new Date();
-    console.log("result--->",result.getDay());
-    var days = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
-    console.log("el dia es:--->",days[result.getDay()]);
 
-    var now = new Date();
-    var start = new Date(now.getFullYear(), 0, 0);
-    var diff = now - start;
-    // console.log("diff-->",diff);
+    console.log("valor-->",this.state.num1);
+    var valorInputDate = this.state.num1;
+    var result = new Date(valorInputDate);
+    // var res = result.split("-");
+    // var num1= res[2]+"-"+res[1]+"-"+res[0];
+   console.log("result-->",result);
+
+
+    // var days = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+    // var daysw = days[result.getDay()];
+    // console.log("el dia es:--->",daysw);
+    //
+    var start = new Date(result.getFullYear(), 0, 0);
+    var diff = result - start;
     var oneDay = 1000 * 60 * 60 * 24;
-    // console.log("oneDay-->",oneDay);
+    // // console.log("oneDay-->",oneDay);
     var day = Math.floor(diff / oneDay);
     var weekend = (day /7 )+1;
     var fecha_final = new Date('2019-5-23');
-    var resultado = now - fecha_final;
-    var year = (resultado / oneDay);
-    console.log("year-->",year);
+    var resultado = result - fecha_final;
+    var yearc = (resultado / oneDay);
+    var yeara = (day-365);
+    // // console.log("year-->",yeara);
+    console.log("year-->",yearc);
     console.log("weekend-->",weekend);
     console.log('Day of year: ' + day);
 
-
-    // var d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
-    // d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
-    // var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-    // var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
-    // // var result = getWeekNumber(new Date());
-    // console.log ("La semana es:-->",weekNo);
 }
 
+  handleSubmit(e) {
+   e.preventDefault();
+   this.setState({
+     result:'',
+     num1:'',
+     fecha_final:new Date(''),
+     days:'',
+     day:'',
+     yearc:'',
+     weekend:'',
+     daysw:'',
+     yeara:''
+   });
+}
+handleInputChange(e) {
+    const {value, name} = e.target;
+    // console.log(value, name);
+    this.setState({
+      [name]: value
+    });
+}
 
-
-  // handleDiaAño({month,day}) {
-  //     var result2 = new Date();
-  //     day + dias anteriores
-  //     return result2;
-  //     console.log();
-  //   }
-  //
-  //   handleMenosDiaAño({month,day}) {
-  //       var result2 = new Date();
-  //       day - dias cumpleaños
-  //       return result2;
-  //       console.log();
-  //     }
-
-
-//   handleSubmit(e) {
-//    e.preventDefault();
-//    var resultadofinal = this.handleComparativa(this.state)
-//    this.setState({
-//      result: resultadofinal,
-//    });
-// }
-// handleInputChange(e) {
-//     const {value, name} = e.target;
-//     // console.log(value, name);
-//     this.setState({
-//       [name]: value
-//     });
-// }
-
-      //console.log("el numero de en medio es--->",result3);
-  render() {
+  render(){
 
     return (
 
     <div>
       <form onSubmit={this.handleDia}>
       <Title>
-      <h1>Valor Medio</h1>
+      <h1>Fechas</h1>
       </Title>
-      <h4> Primer valor </h4>
+      <h4> Ingrese una fecha </h4>
       <Input
-        type="text"
+        type="date"
+        id="num1"
         name="num1"
         value={this.state.num1}
         onChange={this.handleInputChange}
-        placeholder="Ingrese numero"
         />
 
-      <h4> Segundo valor </h4>
-      <Input
+        <h4> El dia es: </h4>
+        <Input
         type="text"
         name="num2"
-        value={this.state.num2}
+        value={this.state.daysw}
         onChange={this.handleInputChange}
-        placeholder="Ingrese  numero"
         />
 
-      <h4> Tercer valor </h4>
-      <Input
-      type="text"
-      name="num3"
-      value={this.state.num3}
-      onChange={this.handleInputChange}
-      placeholder="Ingrese numero"
-      />
-
-      <Button
-      type="submit">
-      Comparar
-      </Button>
-
-      <h4> Resultado </h4>
-      <Input
+        <h4> El dia del año es: </h4>
+        <Input
         type="text"
-        name="result"
-        value={this.state.result}
-
+        name="num2"
+        value={this.state.day}
+        onChange={this.handleInputChange}
         />
+
+       <h4> La semana es </h4>
+       <Input
+       type="text"
+       name="num3"
+       value={this.state.weekend}
+       onChange={this.handleInputChange}
+       />
+
+       <h4> Ingrese su cumpleaños </h4>
+       <Input
+       type="Date"
+       name="num3"
+       value={this.state.fecha_final}
+       onChange={this.handleInputChange}
+       />
+
+
+       <h4> Faltan </h4>
+       <Input
+       type="text"
+       name="num3"
+       value={this.state.yearc}
+       onChange={this.handleInputChange}
+       />
+       <h4> dias para tu cumpleaños </h4>
+
+       <h4> Faltan </h4>
+       <Input
+       type="text"
+       name="result"
+       value={this.state.yeara}
+       />
+       <label> dias para que termine el año </label>
+
+       <Button
+       type="submit">
+       Resultado
+       </Button>
+
+
+
+
       </form>
     </div>
     );
