@@ -3,6 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import styled, {css}from 'styled-components'
 
+const Button = styled.button`
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+
 class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -22,8 +31,7 @@ class Game extends React.Component {
     // console.log("evento-->",e);
     // console.log("target o input--->",e.target.value);
      var abecedario = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q',
-      'R','S','T','U','V','W','X','Y','Z'];
-
+      'R','S','T','U','V','W','X','Y','Z',e.keyUp==26];
      abecedario.forEach((element, index)=> {
 
 
@@ -33,21 +41,20 @@ class Game extends React.Component {
            this.setState({
              result:abecedario[0]
            })
-          console.log("segunda validacion-->");
-          console.log(abecedario[0]);
+          // console.log("segunda validacion-->");
+          // console.log(abecedario[0]);
          return
        }
-
           this.setState({
             result:abecedario[index+1]
           });
           console.log(abecedario[index+1]);
-     }
-
-     if (e.keyCode == 8){
-
 
      }
+
+     // if (e.keyUp==8){
+     //
+     // }
 
      });
 
@@ -77,7 +84,15 @@ class Game extends React.Component {
 
     return (
       <div>
-      <textarea value={this.state.result} onKeyUp={this.handleComparativa} name="texto">  </textarea>
+      <form>
+      <textarea value={this.state.result} onChange={this.handleComparativa} name="texto">  </textarea>
+
+
+      <Button
+      type="submit">
+      Palabra Nueva
+      </Button>
+      </form>
       </div>
     );
   }
