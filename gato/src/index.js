@@ -30,41 +30,45 @@ class Game extends React.Component {
     // console.log("target o input--->",e.target.value);
      var abecedario = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q',
       'R','S','T','U','V','W','X','Y','Z',e.keyUp==26];
-      var p = e.target.value.split('');
-      console.log("p-->",p);
-      p.forEach((element)=>{
+      var palabra = e.target.value.split('');
+      console.log("p-->",palabra);
+      var resultadoFinal='';
+      palabra.forEach((letra) =>{
 
-
-
-
-      })
+        // var letraAbc = p[index]
+        // console.log("letra-->",letraAbc);
 
      abecedario.forEach((element, index)=> {
 
-     letra abc ? (index==26) letra:abecedario[0] : l1:abecedario[index+1]
 
-       if(e.target.value == element){
+       if(letra == element){
+
+
          console.log("primer validacion-->");
          if(index==26) {
-           this.setState({
-             letra:abecedario[0]
-           })
-          // console.log("segunda validacion-->");
-          // console.log(abecedario[0]);
+          resultadoFinal += abecedario[0]
+          this.setState ({
+            li:resultadoFinal
+          })
+
+         // console.log("segunda validacion-->");
+         //   console.log(abecedario[0]);
          return
        }
-          this.setState({
-            result:e.onChange,
-            l1:abecedario[index+1]
+         resultadoFinal += abecedario[index+1]
+         this.setState({
+          result:e.onChange,
+            l1:resultadoFinal
           });
 
           console.log(abecedario[index+1]);
 
      }
 
-     // if (e.keyUp==8){
-     //
-     // }
+      if (e.keyUp==8){
+
+      }
+       });
 
      });
 
