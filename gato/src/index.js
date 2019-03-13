@@ -28,50 +28,23 @@ class Game extends React.Component {
     super(props);
     this.state = {
     result:'',
-    li:''
+    letra:''
    }
-   this.handleComparativa = this.handleComparativa.bind(this);
+   this.handleTexto = this.handleTexto.bind(this);
  }
 
-   handleComparativa(e,result){
+   handleTexto(e,letra){
 
-     var abecedario = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q',
-      'R','S','T','U','V','W','X','Y','Z',e.keyUp==26,'  '];
-     var palabra = e.target.value.split("");
-        console.log("p-->",palabra);
-     var resultadoFinal='';
-     var espacio="";
-        palabra.forEach((letra) =>{
+     var cadena = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
-      abecedario.forEach((element, index)=> {
+     var indices = [];
+     for(var i = 0; i < cadena.length; i++) {
+  	 if (cadena[i].toLowerCase() === letra) indices.push(i);
+     var result = indices.length;
+  }
+    console.log("indices-->",indices.length);
+    return result
 
-
-       if(letra == element){
-
-         console.log("primer validacion-->");
-          if(index==26) {
-          resultadoFinal += abecedario[0]
-            this.setState ({
-              li:resultadoFinal
-          })
-
-         // console.log("segunda validacion-->");
-         //   console.log(abecedario[0]);
-         return
-        }
-           resultadoFinal  += abecedario[index+1]
-            this.setState({
-              result:e.onChange,
-              l1:resultadoFinal
-          });
-
-          console.log(abecedario[index-1]);
-
-     }
-
-       });
-
-     });
 
    }
 
@@ -82,8 +55,8 @@ class Game extends React.Component {
       <form >
         <div>
           <textarea
-          value={this.state.result}
-          onChange={this.handleComparativa}
+          value={this.state.letra}
+          onChange={this.handleTexto}
           id="textareabox"
           name="textarea1"
           placeholder="Start here...">
@@ -92,9 +65,9 @@ class Game extends React.Component {
 
           <Input
             type="text"
-            name="num3"
-            value={this.state.l1}
-            onChange={this.handleComparativa}
+            name="letra"
+            value={this.state.result}
+            onChange={this.handleTexto}
             />
 
         </div>
