@@ -29,7 +29,8 @@ class Game extends React.Component {
     this.state = {
     result:'',
     cadena:'' ,
-    letra:''
+    letra:'',
+
    }
    this.handleTexto = this.handleTexto.bind(this);
    this.handleInputChange = this.handleInputChange.bind(this);
@@ -37,21 +38,25 @@ class Game extends React.Component {
 
    handleTexto(e){
      e.preventDefault();
+
      var cadena=this.state.cadena;
+     console.log("cadena--->",cadena);
      var letra=this.state.letra;
      console.log("letra-->",letra);
-     var indices = [];
-     for(var i = 0; i < cadena.length; i++) {
-  	 if (cadena[i].toLowerCase() === letra) indices.push(i);
+     var palabra = cadena.split(" ");
+     console.log("palabra-->",palabra);
 
-     }
+     for(var i = 0; i < palabra.length;i++) {
+  	 if (cadena[i].toLowerCase() === letra) indices.push(i);
+     var indices = [e];
     console.log("indices-->",indices.length);
-    var indices = indices.length;
+    var indices =  indices.push(i);
 
     this.setState({
     result:indices
-    })
+  });
    }
+ }
    handleInputChange(e) {
        const {value, name} = e.target;
        // console.log(value, name);
