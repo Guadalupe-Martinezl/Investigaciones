@@ -28,25 +28,39 @@ class Game extends React.Component {
     super(props);
     this.state = {
     result:'',
+    cadena:'',
     letra:''
    }
    this.handleTexto = this.handleTexto.bind(this);
+   this.handleInputChange = this.handleInputChange.bind(this);
  }
 
-   handleTexto(e,letra){
-
-     var cadena = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
+   handleTexto(e){
+     e.preventDefault();
+     var cadena=this.state.cadena;
+     var letra=this.state.letra;
+     console.log("letra-->",letra);
      var indices = [];
      for(var i = 0; i < cadena.length; i++) {
   	 if (cadena[i].toLowerCase() === letra) indices.push(i);
-     var result = indices.length;
-  }
+
+     }
     console.log("indices-->",indices.length);
-    return result
+    var indices = indices.length;
 
+    return
 
+    this.setState({
+    result:indices,
+    });
    }
+   handleInputChange(e) {
+       const {value, name} = e.target;
+       // console.log(value, name);
+       this.setState({
+         [name]: value
+       });
+     }
 
 
   render() {
@@ -55,17 +69,29 @@ class Game extends React.Component {
       <form >
         <div>
           <textarea
-          value={this.state.letra}
-          onChange={this.handleTexto}
+          value={this.state.cadena}
+          onChange={this.handleInputChange}
           id="textareabox"
-          name="textarea1"
+          name="cadena"
           placeholder="Start here...">
           </textarea>
-
 
           <Input
             type="text"
             name="letra"
+            value={this.state.letra}
+            onChange={this.handleInputChange}
+            />
+
+          <button
+          name="contar"
+          onClick={this.handleInputChange} >
+          Contar
+          </button>
+
+          <Input
+            type="text"
+            name="result"
             value={this.state.result}
             onChange={this.handleTexto}
             />
