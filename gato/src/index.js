@@ -28,7 +28,7 @@ class Game extends React.Component {
     super(props);
     this.state = {
     result:'',
-    cadena:'',
+    cadena:'' ,
     letra:''
    }
    this.handleTexto = this.handleTexto.bind(this);
@@ -48,17 +48,16 @@ class Game extends React.Component {
     console.log("indices-->",indices.length);
     var indices = indices.length;
 
-    return
-
     this.setState({
-    result:indices,
-    });
+    result:indices
+    })
    }
    handleInputChange(e) {
        const {value, name} = e.target;
        // console.log(value, name);
        this.setState({
          [name]: value
+
        });
      }
 
@@ -73,7 +72,7 @@ class Game extends React.Component {
           onChange={this.handleInputChange}
           id="textareabox"
           name="cadena"
-          placeholder="Start here...">
+          placeholder="Escribe Aqui...">
           </textarea>
 
           <Input
@@ -84,16 +83,16 @@ class Game extends React.Component {
             />
 
           <button
-          name="contar"
-          onClick={this.handleInputChange} >
-          Contar
+            name="contar"
+            onClick={this.handleTexto} >
+            Contar
           </button>
 
           <Input
             type="text"
             name="result"
             value={this.state.result}
-            onChange={this.handleTexto}
+            placeholder="La letra se repite"
             />
 
         </div>
